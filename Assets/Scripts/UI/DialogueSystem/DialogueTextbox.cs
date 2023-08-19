@@ -16,6 +16,7 @@ public class DialogueTextbox : MonoBehaviour
 
     public void OnLineStart(string _line)
     {
+        gameObject.SetActive(true);
         boxAnimator.SetBool("isOpen", true);
     }
 

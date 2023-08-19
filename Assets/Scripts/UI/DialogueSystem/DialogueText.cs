@@ -61,6 +61,7 @@ public class DialogueText : MonoBehaviour
 
     public void OnLineStart(string line)
     {
+        gameObject.SetActive(true);
         isActive = true;
         autoAdvanceT = 0.0f;
         textRenderer.SetText(line);
