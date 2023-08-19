@@ -3734,17 +3734,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 521587570371604002, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
-      propertyPath: m_LinearDrag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 587386215532314628, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.93
+      value: -15.57
       objectReference: {fileID: 0}
     - target: {fileID: 587386215532314628, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.61
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 587386215532314628, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3777,18 +3773,6 @@ PrefabInstance:
     - target: {fileID: 587386215532314628, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298192518423656220, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cd3b74ca1bbf496468c08e27af76cd12, type: 2}
-    - target: {fileID: 6014933543235938141, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
-      propertyPath: horizontalAirDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014933543235938141, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
-      propertyPath: horizontalGroundDrag
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6733999037864743170, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
       propertyPath: m_Name

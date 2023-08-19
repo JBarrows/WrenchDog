@@ -8,7 +8,9 @@ public class AligatorController : MonoBehaviour
     public float maxHorizontalSpeed = 6.0f;
     public float horizontalInputScalar = 5.0f;
     public float jumpForce = 5.0f;
+    public float jumpSlow = 0.5f;
     public float riseTime = 0.5f; // How long gravity is suspended as you hold the jump key
+    public float riseGravity = 0.3f;
 
     int facingDirection = 1; // -1: left, 0: away/towards, 1: right
     bool isJumping = false;
@@ -24,8 +26,7 @@ public class AligatorController : MonoBehaviour
                 return;
 
             if (isJumping) {
-                rigidbody.drag = 2.5f;
-                rigidbody.gravityScale = 0.1f;
+                rigidbody.gravityScale = riseGravity;
             } else {
                 rigidbody.gravityScale = 1.0f;
             }
@@ -42,7 +43,6 @@ public class AligatorController : MonoBehaviour
             if (!hit)
                 return false;
 
-            // rigidbody.drag = 1.5f;
             return true;
         }
     }
@@ -63,9 +63,13 @@ public class AligatorController : MonoBehaviour
     void GetHorizontalInput()
     {
         var hInput = Input.GetAxis("Horizontal");
+        var maxSpeed = maxHorizontalSpeed;
+        if (!OnGround)
+            maxSpeed *= jumpSlow;
+
         if (hInput > 0) {
             // Pressing right
-            if (rigidbody.velocity.x >= maxHorizontalSpeed) {
+            if (rigidbody.velocity.x >= maxSpeed) {
                 return; // EXIT: Already going too fast in this direction
             } else if (facingDirection < 0) {
                 facingDirection = 1;
@@ -80,6 +84,9 @@ public class AligatorController : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
         }
+
+        if (!OnGround)
+            hInput *= jumpSlow;
 
         rigidbody.AddForce(Vector2.right * hInput * horizontalInputScalar * Time.deltaTime * 100);
     }
@@ -96,6 +103,7 @@ public class AligatorController : MonoBehaviour
         if (!Jumping) {
             if (OnGround && Input.GetButtonDown("Jump")) {
                 // Start jump
+                rigidbody.velocityX *= jumpSlow;
                 rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 jumpStartTime = Time.time;
                 Jumping = true;

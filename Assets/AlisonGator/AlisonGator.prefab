@@ -14491,7 +14491,7 @@ Transform:
   m_GameObject: {fileID: 5391248685502841332}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.19, y: -4.06, z: 0.0000011920929}
+  m_LocalPosition: {x: 0.08, y: -4.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16614,7 +16614,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7391286966265608456, guid: 71794798793090d40a5954e2814e5d10, type: 3}
+  - {fileID: 2100000, guid: cd3b74ca1bbf496468c08e27af76cd12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17640,8 +17640,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 587386215532314628}
-  - component: {fileID: 6931334799393052995}
   - component: {fileID: 521587570371604002}
+  - component: {fileID: 1484141423579557130}
   - component: {fileID: 6014933543235938141}
   m_Layer: 0
   m_Name: AlisonGator
@@ -17666,8 +17666,35 @@ Transform:
   - {fileID: 4727161888125754190}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &6931334799393052995
-CapsuleCollider2D:
+--- !u!50 &521587570371604002
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733999037864743170}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &1484141423579557130
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -17700,36 +17727,18 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
---- !u!50 &521587570371604002
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6733999037864743170}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1.5
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Offset: {x: 0, y: 1.1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.75, y: 2.2}
+  m_EdgeRadius: 0
 --- !u!114 &6014933543235938141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17744,8 +17753,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHorizontalSpeed: 6
   horizontalInputScalar: 7
-  jumpForce: 7
+  jumpForce: 4
+  jumpSlow: 0.5
   riseTime: 0.4
+  riseGravity: 0.4
 --- !u!1 &6742302284795685159
 GameObject:
   m_ObjectHideFlags: 0
