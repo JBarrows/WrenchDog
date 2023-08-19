@@ -6,6 +6,7 @@ public class AligatorController : MonoBehaviour
 {
     public float maxHorizontalSpeed = 2.0f;
     public float horizontalInputScalar = 1.0f;
+    public float jumpForce = 5.0f;
 
     int facingDirection = 1; // -1: left, 0: away/towards, 1: right
     new Rigidbody2D rigidbody;
@@ -20,6 +21,7 @@ public class AligatorController : MonoBehaviour
     void Update()
     {
         GetHorizontalInput();
+        GetJumpInput();
     }
 
     void GetHorizontalInput()
@@ -44,5 +46,15 @@ public class AligatorController : MonoBehaviour
         }
 
         rigidbody.AddForce(Vector2.right * hInput * horizontalInputScalar);
+    }
+
+    void GetJumpInput() {
+        var hInput = Input.GetButtonDown("Jump");
+        if (hInput) {
+            rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rigidbody.gravityScale = 0.1f;
+        } else if (Input.GetButtonUp("Jump")) {
+            rigidbody.gravityScale = 1;
+        }
     }
 }

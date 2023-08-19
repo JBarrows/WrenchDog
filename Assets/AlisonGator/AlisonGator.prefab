@@ -196,3 +196,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHorizontalSpeed: 6
   horizontalInputScalar: 1
+  jumpForce: 5
