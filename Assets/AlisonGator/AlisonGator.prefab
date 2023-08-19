@@ -17743,9 +17743,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHorizontalSpeed: 6
-  horizontalInputScalar: 5
-  jumpForce: 5
-  riseTime: 0.5
+  horizontalInputScalar: 7
+  jumpForce: 7
+  riseTime: 0.4
 --- !u!1 &6742302284795685159
 GameObject:
   m_ObjectHideFlags: 0

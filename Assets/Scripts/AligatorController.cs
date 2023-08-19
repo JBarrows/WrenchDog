@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,21 @@ public class AligatorController : MonoBehaviour
             } else {
                 rigidbody.gravityScale = 1.0f;
             }
+        }
+    }
+
+    bool OnGround
+    {
+        get {
+            if (Jumping)
+                return false;
+            
+            RaycastHit2D hit = Physics2D.Linecast(transform.position + new Vector3(-0.5f, -0.01f), transform.position + new Vector3(0.5f, -0.01f));
+            if (!hit)
+                return false;
+
+            // rigidbody.drag = 1.5f;
+            return true;
         }
     }
 
@@ -68,20 +84,6 @@ public class AligatorController : MonoBehaviour
         rigidbody.AddForce(Vector2.right * hInput * horizontalInputScalar * Time.deltaTime * 100);
     }
     
-    bool OnGround {
-        get {
-            if (Jumping)
-                return false;
-            
-            RaycastHit2D hit = Physics2D.Linecast(transform.position + new Vector3(-0.5f, -0.01f), transform.position + new Vector3(0.5f, -0.01f));
-            if (!hit)
-                return false;
-
-            rigidbody.drag = 1.5f;
-            return true;
-        }
-    }
-
     void GetJumpInput() {
         if (Jumping) {
             if (rigidbody.gravityScale < 0.9f && (Input.GetButtonUp("Jump") || (Time.time - jumpStartTime) > riseTime)) {
