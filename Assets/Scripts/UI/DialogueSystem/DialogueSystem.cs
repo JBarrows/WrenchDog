@@ -36,15 +36,22 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    public static void PlayDialogue(DialogueAsset dialogue)
+    public void PlayDialogue(DialogueAsset dialogue)
     {
         if (!Instance)
         {
             GameObject obj = (Resources.Load(PREFAB_PATH) as GameObject);
             Instantiate(obj);
         }
-
         Instance.gameObject.SetActive(true);
+        StartCoroutine(WaitForTransition(dialogue));
+    }
+
+    public IEnumerator WaitForTransition(DialogueAsset dialogue)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        
         Instance.sequencer.PlayDialogue(dialogue);
     }
 
