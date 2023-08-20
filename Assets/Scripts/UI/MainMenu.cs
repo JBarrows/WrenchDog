@@ -25,7 +25,12 @@ public class MainMenu : MonoBehaviour
                 return;
             }
 
-            SceneManager.LoadSceneAsync(startGameScene, LoadSceneMode.Single);
+            var controller = FindFirstObjectByType<SceneController>();
+            if (controller != null) {
+                controller.Load(startGameScene);
+            } else {
+                SceneManager.LoadSceneAsync(startGameScene, LoadSceneMode.Single);
+            }
         }
     }
 }
