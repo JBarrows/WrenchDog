@@ -79,9 +79,10 @@ public class AligatorController : MonoBehaviour
         {
             float distance = Vector3.Distance(gameObject.transform.position, swingAnchor);
             rigidbody.AddForce(
-                distance *
+                distance * distance * distance * Time.deltaTime *
                 Vector3.Normalize(swingAnchor - gameObject.transform.position) *
-                swingCoefficient
+                swingCoefficient,
+                ForceMode2D.Impulse
             );
         } else {
             GetHorizontalInput();
