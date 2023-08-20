@@ -19,6 +19,7 @@ public class AligatorController : MonoBehaviour
     public float riseTime = 0.5f; // How long gravity is suspended as you hold the jump key
     public float riseGravity = 0.3f;
     public float swingCoefficient = 1.0f;
+    public GameObject wrenchHolder;
 
     float swingRadius = 0.0f;
     bool isSwinging = false;
@@ -80,9 +81,11 @@ public class AligatorController : MonoBehaviour
         if(isSwinging)
         {
             float distance = Vector3.Distance(gameObject.transform.position, swingAnchor);
+            Vector3 normalizedVector = Vector3.Normalize(swingAnchor - gameObject.transform.position);
+            wrenchHolder.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(normalizedVector.y, normalizedVector.x) * Mathf.Rad2Deg);
             rigidbody.AddForce(
                 distance * distance * distance * Time.deltaTime *
-                Vector3.Normalize(swingAnchor - gameObject.transform.position) *
+                normalizedVector *
                 swingCoefficient,
                 ForceMode2D.Impulse
             );
@@ -155,6 +158,7 @@ public class AligatorController : MonoBehaviour
         {
             swingRadius = 0.0f;
             isSwinging = false;
+            wrenchHolder.transform.localRotation = Quaternion.Euler(0, 0, 62);
         }
     }
 

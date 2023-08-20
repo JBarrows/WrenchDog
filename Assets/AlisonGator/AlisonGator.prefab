@@ -119,6 +119,7 @@ Transform:
   m_Children:
   - {fileID: 4727161888125754190}
   - {fileID: 3966453690828686286}
+  - {fileID: 977423282900741233}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &521587570371604002
@@ -217,17 +218,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 8
-  ThrowWrench:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6014933543235938141}
-        m_TargetAssemblyTypeName: AligatorController, Assembly-CSharp
-        m_MethodName: TogglePlatformFreeze
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -243,6 +233,25 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ThrowWrench:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6014933543235938141}
+        m_TargetAssemblyTypeName: AligatorController, Assembly-CSharp
+        m_MethodName: TogglePlatformFreeze
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   RecallWrench:
     m_PersistentCalls:
       m_Calls:
@@ -266,6 +275,7 @@ MonoBehaviour:
   riseTime: 0.4
   riseGravity: 1
   swingCoefficient: 1.8
+  wrenchHolder: {fileID: 7644850510122056200}
 --- !u!61 &2440018530024936960
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -312,6 +322,38 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.73, y: 0.1}
   m_EdgeRadius: 0
+--- !u!1 &7644850510122056200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 977423282900741233}
+  m_Layer: 0
+  m_Name: WrenchHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &977423282900741233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644850510122056200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.5142898, w: 0.8576165}
+  m_LocalPosition: {x: 0.389, y: 0.563, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7018796060852309348}
+  m_Father: {fileID: 587386215532314628}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 61.9}
 --- !u!1001 &923158319004160734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -378,4 +420,66 @@ Transform:
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5611886586381469186, guid: 3e843d241ffbe8d499a40d5e16c27e59, type: 3}
   m_PrefabInstance: {fileID: 923158319004160734}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7416721230813604495
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 977423282900741233}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+      propertyPath: m_Name
+      value: wrench
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+--- !u!4 &7018796060852309348 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+  m_PrefabInstance: {fileID: 7416721230813604495}
   m_PrefabAsset: {fileID: 0}
