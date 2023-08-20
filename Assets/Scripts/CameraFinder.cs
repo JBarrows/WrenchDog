@@ -18,4 +18,15 @@ public class CameraFinder : MonoBehaviour
             canvas.worldCamera = Camera.main;
         }
     }
+
+    private void Update() {
+        if (!canvas) {
+            canvas = GetComponent<Canvas>();
+            canvas.enabled = true;
+        }
+
+        if (canvas && canvas.worldCamera == null) {
+            canvas.worldCamera = Camera.main;
+        }
+    }
 }
