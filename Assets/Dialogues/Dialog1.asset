@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Dialog1
   m_EditorClassIdentifier: 
   lines:
-  - Hello world
-  - bottom text
+  - "How\u2019s the Janitor doing on sanitation?"
+  - "Looks like he\u2019s gone again and left his tools behind. Is that\u2026"
+  - Our test subject with a wrench?
+  - ' Looks like it. Should we do something?'
+  - "Let\u2019s just see how this plays out, I doubt they\u2019ll realize they need
+    to point and right click to grapple."

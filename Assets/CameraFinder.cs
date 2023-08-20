@@ -14,6 +14,7 @@ public class CameraFinder : MonoBehaviour
         }
 
         if (canvas != null) {
+            canvas.enabled = true;
             canvas.worldCamera = Camera.main;
         }
     }

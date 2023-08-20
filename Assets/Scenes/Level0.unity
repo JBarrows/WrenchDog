@@ -501,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 62655065691197717, guid: c918511473374d744a8cc73efec6bf65, type: 3}
       propertyPath: testDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 99dd725e17550634da6f98cc0b78fc05, type: 2}
+      objectReference: {fileID: 11400000, guid: 241abaac772b61146a25f09e6d7984b1, type: 2}
     - target: {fileID: 2763729420795373164, guid: c918511473374d744a8cc73efec6bf65, type: 3}
       propertyPath: m_Pivot.x
       value: 0
