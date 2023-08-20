@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AligatorController : MonoBehaviour
 {
+    public UnityEvent OnJump;
+    public UnityEvent OnLand;
+
     public float maxHorizontalSpeed = 6.0f;
     public float horizontalInputScalar = 5.0f;
     public float jumpForce = 10.0f;
@@ -78,6 +82,11 @@ public class AligatorController : MonoBehaviour
         } else {
             GetHorizontalInput();
         }
+
+        if(rigidbody.velocityY < -0.1f && OnGround)
+        {
+            OnLand.Invoke();
+        }
     }
 
     void GetHorizontalInput()
@@ -127,6 +136,7 @@ public class AligatorController : MonoBehaviour
                 rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 jumpStartTime = Time.time;
                 Jumping = true;
+                OnJump.Invoke();
             }
         }
     }

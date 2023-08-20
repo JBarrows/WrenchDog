@@ -176,7 +176,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      particleDust_0: 4260226572108957003
+      particleDust_1: -4930279474750318449
+      particleDust_2: 5782794884734201468
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
