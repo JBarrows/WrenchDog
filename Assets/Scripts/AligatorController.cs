@@ -7,8 +7,9 @@ public class AligatorController : MonoBehaviour
 {
     public float maxHorizontalSpeed = 6.0f;
     public float horizontalInputScalar = 5.0f;
-    public float jumpForce = 5.0f;
+    public float jumpForce = 10.0f;
     public float jumpSlow = 0.5f;
+    public float stdGravity = 1.5f;
     public float riseTime = 0.5f; // How long gravity is suspended as you hold the jump key
     public float riseGravity = 0.3f;
 
@@ -28,7 +29,7 @@ public class AligatorController : MonoBehaviour
             if (isJumping) {
                 rigidbody.gravityScale = riseGravity;
             } else {
-                rigidbody.gravityScale = 1.0f;
+                rigidbody.gravityScale = 1.5f;
             }
         }
     }
@@ -95,7 +96,7 @@ public class AligatorController : MonoBehaviour
     
     void GetJumpInput() {
         if (Jumping) {
-            if (rigidbody.gravityScale < 0.9f && (Input.GetButtonUp("Jump") || (Time.time - jumpStartTime) > riseTime)) {
+            if (rigidbody.gravityScale < stdGravity && (Input.GetButtonUp("Jump") || (Time.time - jumpStartTime) > riseTime)) {
                 // Stop rising (re-enable gravity)
                 Jumping = false;
             }
