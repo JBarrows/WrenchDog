@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 1c03df813d8a9ae4f88f0cd829347848
+guid: 0a434abe1dde7904aa4cfbf5ed4b96dd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7352339073622421304
-    second: Title_0
+      213: 4260226572108957003
+    second: particleDust_0
+  - first:
+      213: -4930279474750318449
+    second: particleDust_1
+  - first:
+      213: 5782794884734201468
+    second: particleDust_2
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -46,12 +52,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -98,22 +104,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Title_0
+      name: particleDust_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 762
-        height: 449
+        x: 2
+        y: 53
+        width: 7
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 09dcc7bc26671b14c9253f0a5287557e
-      internalID: -7352339073622421304
+      spriteID: b450c35ee7d5f1b30800000000000000
+      internalID: 4260226572108957003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: particleDust_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 4
+        width: 114
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f889b1080f0249bb0800000000000000
+      internalID: -4930279474750318449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: particleDust_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 30
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7e27812f4d904050800000000000000
+      internalID: 5782794884734201468
       vertices: []
       indices: 
       edges: []
@@ -121,7 +169,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3b013cb159665984489f9f0fdad5b022
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -129,7 +177,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Title_0: -7352339073622421304
+      particleDust_0: 4260226572108957003
+      particleDust_1: -4930279474750318449
+      particleDust_2: 5782794884734201468
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
