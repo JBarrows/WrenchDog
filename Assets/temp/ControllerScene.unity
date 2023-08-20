@@ -4442,6 +4442,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6014933543235938141, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
+      propertyPath: worldWrench
+      value: 
+      objectReference: {fileID: 1802128862769957210, guid: 0d871557da0053e4da6dd2cecf2d76df, type: 3}
+    - target: {fileID: 6014933543235938141, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
+      propertyPath: throwingWrench
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014933543235938141, guid: 70088d4abb2d39944bf93bc758304512, type: 3}
       propertyPath: swingCoefficient
       value: 0.9
       objectReference: {fileID: 0}

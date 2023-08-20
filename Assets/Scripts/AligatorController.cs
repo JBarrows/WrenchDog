@@ -19,7 +19,10 @@ public class AligatorController : MonoBehaviour
     public float riseTime = 0.5f; // How long gravity is suspended as you hold the jump key
     public float riseGravity = 0.3f;
     public float swingCoefficient = 1.0f;
-
+    public GameObject wrenchHolder;
+    public GameObject worldWrench;
+    
+    GameObject throwingWrench;
     float swingRadius = 0.0f;
     bool isSwinging = false;
     bool isSwingDown = false;
@@ -70,6 +73,8 @@ public class AligatorController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         camera = Camera.main;
+        throwingWrench = Instantiate(worldWrench, gameObject.transform.position, Quaternion.identity);
+        throwingWrench.SetActive(false);
     }
 
     // Update is called once per frame
@@ -80,9 +85,11 @@ public class AligatorController : MonoBehaviour
         if(isSwinging)
         {
             float distance = Vector3.Distance(gameObject.transform.position, swingAnchor);
+            Vector3 normalizedVector = Vector3.Normalize(swingAnchor - gameObject.transform.position);
+            wrenchHolder.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(normalizedVector.y, normalizedVector.x) * Mathf.Rad2Deg);
             rigidbody.AddForce(
                 distance * distance * distance * Time.deltaTime *
-                Vector3.Normalize(swingAnchor - gameObject.transform.position) *
+                normalizedVector *
                 swingCoefficient,
                 ForceMode2D.Impulse
             );
@@ -155,6 +162,7 @@ public class AligatorController : MonoBehaviour
         {
             swingRadius = 0.0f;
             isSwinging = false;
+            wrenchHolder.transform.localRotation = Quaternion.Euler(0, 0, 62);
         }
     }
 
@@ -170,16 +178,40 @@ public class AligatorController : MonoBehaviour
                         isUsingWrench = true;
                         lockedPlatform = hit.gameObject.transform.parent.gameObject;
                         // play throw wrench animation
-                        ThrowWrench.Invoke();
+                        Vector3 startPosition = gameObject.transform.position;
+                        Vector3 endPosition = hit.gameObject.transform.position;
+                        float distance = Vector3.Distance(startPosition, endPosition);
+                        Vector3 normalizedVector = Vector3.Normalize(endPosition - startPosition);
+                        throwingWrench.transform.position = startPosition;
+                        throwingWrench.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(normalizedVector.y, normalizedVector.x) * Mathf.Rad2Deg);
+                        throwingWrench.SetActive(true);
+                        throwingWrench.GetComponent<Rigidbody2D>().AddForce((endPosition - startPosition) / 0.25f, ForceMode2D.Impulse);
+                        wrenchHolder.SetActive(false);
+                        StartCoroutine(ThrowWrenchCoroutine(endPosition));
+                        
                     }
                 }
             } else {
                 // Call wrench back
                 isUsingWrench = false;
+                throwingWrench.SetActive(false);
+                wrenchHolder.SetActive(true);
                 RecallWrench.Invoke();
                 lockedPlatform = null;
             }
         }
+    }
+
+    IEnumerator ThrowWrenchCoroutine(Vector3 endPosition)
+    {
+        yield return new WaitForSeconds(0.23f);
+
+        throwingWrench.GetComponent<Rigidbody2D>().velocity *= 0.0f;
+        throwingWrench.transform.position = endPosition;
+
+        // yield return new WaitForSeconds(0.02f);
+
+        ThrowWrench.Invoke();
     }
 
     public void TogglePlatformFreeze()
