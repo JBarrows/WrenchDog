@@ -73,8 +73,7 @@ public class AligatorController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         camera = Camera.main;
-        throwingWrench = Instantiate(worldWrench, gameObject.transform.position, Quaternion.identity);
-        throwingWrench.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -182,6 +181,7 @@ public class AligatorController : MonoBehaviour
                         Vector3 endPosition = hit.gameObject.transform.position;
                         float distance = Vector3.Distance(startPosition, endPosition);
                         Vector3 normalizedVector = Vector3.Normalize(endPosition - startPosition);
+                        if(!throwingWrench) throwingWrench = Instantiate(worldWrench, gameObject.transform.position, Quaternion.identity);
                         throwingWrench.transform.position = startPosition;
                         throwingWrench.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(normalizedVector.y, normalizedVector.x) * Mathf.Rad2Deg);
                         throwingWrench.SetActive(true);
