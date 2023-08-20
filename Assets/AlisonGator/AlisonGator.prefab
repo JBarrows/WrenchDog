@@ -205,6 +205,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3feb4a7dfe9cca4aa7a5580c831ed19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThrowWrench:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6014933543235938141}
+        m_TargetAssemblyTypeName: AligatorController, Assembly-CSharp
+        m_MethodName: TogglePlatformFreeze
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  RecallWrench:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6014933543235938141}
+        m_TargetAssemblyTypeName: AligatorController, Assembly-CSharp
+        m_MethodName: TogglePlatformFreeze
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   maxHorizontalSpeed: 8
   horizontalInputScalar: 8
   jumpForce: 6
@@ -212,7 +242,7 @@ MonoBehaviour:
   stdGravity: 1.7
   riseTime: 0.4
   riseGravity: 1
-  swingCoefficient: 0.9
+  swingCoefficient: 1.8
 --- !u!61 &2440018530024936960
 BoxCollider2D:
   m_ObjectHideFlags: 0
