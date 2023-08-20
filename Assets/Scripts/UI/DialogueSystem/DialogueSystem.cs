@@ -9,6 +9,8 @@ public class DialogueSystem : MonoBehaviour
     public UnityEvent onDialogueEnd;
     public static UnityEvent OnDialogueEnd { get { return Instance.onDialogueEnd; } }
 
+    const string PREFAB_PATH = "Assets/Prefabs/DialogueSystem/DialogueCanvas.prefab";
+
     //Singleton pattern
     private static DialogueSystem _instance;
     public static DialogueSystem Instance { get { return _instance; } }
@@ -36,6 +38,12 @@ public class DialogueSystem : MonoBehaviour
 
     public static void PlayDialogue(DialogueAsset dialogue)
     {
+        if (!Instance)
+        {
+            GameObject obj = (Resources.Load(PREFAB_PATH) as GameObject);
+            Instantiate(obj);
+        }
+
         Instance.gameObject.SetActive(true);
         Instance.sequencer.PlayDialogue(dialogue);
     }
