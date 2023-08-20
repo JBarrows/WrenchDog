@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2abfd58e37eee44449aee424383aa260
+guid: e52a0b35175ac5f429e91e4584653b85
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7430558899833497709
-    second: Bolt_0
+      213: 7187605287395344610
+    second: Bolt_Grapple_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bolt_0
+      name: Bolt_Grapple_0
       rect:
         serializedVersion: 2
         x: 0
         y: 3
         width: 54
-        height: 49
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3979ec4ac0a51e890800000000000000
-      internalID: -7430558899833497709
+      spriteID: 2e04be46de08fb360800000000000000
+      internalID: 7187605287395344610
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bolt_0: -7430558899833497709
+      Bolt_Grapple_0: 7187605287395344610
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
