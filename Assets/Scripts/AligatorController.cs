@@ -40,11 +40,7 @@ public class AligatorController : MonoBehaviour
                 return false;
             
             RaycastHit2D hit = Physics2D.Linecast(transform.position + new Vector3(-0.73f / 2F, -0.01f), transform.position + new Vector3(0.73f/2F, -0.01f));
-            if (hit && hit.collider != null) {
-                Debug.Log("hit");
-            } else {
-                // Debug.Log("NOT");
-            }
+            
             if (!hit) {
                 return false;
             }
