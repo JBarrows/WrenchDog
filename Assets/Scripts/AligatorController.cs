@@ -12,6 +12,12 @@ public class AligatorController : MonoBehaviour
     public float stdGravity = 1.5f;
     public float riseTime = 0.5f; // How long gravity is suspended as you hold the jump key
     public float riseGravity = 0.3f;
+    public float swingCoefficient = 1.0f;
+
+    float swingRadius = 0.0f;
+    bool isSwinging = false;
+    bool isSwingDown = false;
+    Vector3 swingAnchor = new Vector3(0.0f, 0.0f, 0.0f);
 
     int facingDirection = 1; // -1: left, 0: away/towards, 1: right
     bool isJumping = false;
@@ -59,8 +65,19 @@ public class AligatorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetHorizontalInput();
         GetJumpInput();
+        GetSwingInput();
+        if(isSwinging)
+        {
+            float distance = Vector3.Distance(gameObject.transform.position, swingAnchor);
+            rigidbody.AddForce(
+                distance *
+                Vector3.Normalize(swingAnchor - gameObject.transform.position) *
+                swingCoefficient
+            );
+        } else {
+            GetHorizontalInput();
+        }
     }
 
     void GetHorizontalInput()
@@ -110,6 +127,30 @@ public class AligatorController : MonoBehaviour
                 rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 jumpStartTime = Time.time;
                 Jumping = true;
+            }
+        }
+    }
+
+    void GetSwingInput() {
+        isSwingDown = Input.GetButton("Fire2");
+        if (!isSwingDown && swingRadius > 0.0f)
+        {
+            swingRadius = 0.0f;
+            isSwinging = false;
+        }
+
+        // Debug.Log(isSwingDown);
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "SwingPoint")
+        {
+            if(swingRadius <= 0.0f && isSwingDown)
+            {
+                swingAnchor = other.gameObject.transform.position;
+                swingRadius = Vector3.Distance(gameObject.transform.position, swingAnchor);
+                isSwinging = true;
             }
         }
     }
