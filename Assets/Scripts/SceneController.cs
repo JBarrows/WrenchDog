@@ -32,8 +32,6 @@ public class SceneController : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.4f);
-
         // Load the new scene
         asyncOp = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
         while (!asyncOp.isDone) {
