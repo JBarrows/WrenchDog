@@ -961,6 +961,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2223729706118672907, guid: 0c1f9cf25fe82d84d9e04012295d9622, type: 3}
+      propertyPath: m_Color.a
+      value: 0.09411765
+      objectReference: {fileID: 0}
     - target: {fileID: 3550365657960416092, guid: 0c1f9cf25fe82d84d9e04012295d9622, type: 3}
       propertyPath: m_Name
       value: SwingPoint
