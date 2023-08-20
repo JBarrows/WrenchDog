@@ -35,11 +35,10 @@ public class SceneController : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
 
         // Load the new scene
-        var loadNew = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
-        while (!loadNew.isDone) {
+        asyncOp = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        while (!asyncOp.isDone) {
             yield return null;
         }
-        Debug.Log("New Scene Loaded");
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         // Unload the transition

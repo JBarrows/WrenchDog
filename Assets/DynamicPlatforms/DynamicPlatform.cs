@@ -9,6 +9,9 @@ public class DynamicPlatform : MonoBehaviour
     public bool isLocked = false;
     public GameObject child;
 
+    public UnityEvent onLock;
+    public UnityEvent onUnlock;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,11 @@ public class DynamicPlatform : MonoBehaviour
     void ToggleFreezePlatform()
     {
         Rigidbody2D rb = child.GetComponent<Rigidbody2D>();
+        if (rb.freezeRotation) {
+            onUnlock.Invoke();
+        } else {
+            onLock.Invoke();
+        }
         rb.freezeRotation = !rb.freezeRotation;
     }
 

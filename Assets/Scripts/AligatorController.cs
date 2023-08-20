@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class AligatorController : MonoBehaviour
 {
+    public UnityEvent OnJump;
+    public UnityEvent OnLand;
     [SerializeField] private UnityEvent ThrowWrench;
     [SerializeField] private UnityEvent RecallWrench;
 
@@ -79,13 +81,19 @@ public class AligatorController : MonoBehaviour
         {
             float distance = Vector3.Distance(gameObject.transform.position, swingAnchor);
             rigidbody.AddForce(
-                distance *
+                distance * distance * distance * Time.deltaTime *
                 Vector3.Normalize(swingAnchor - gameObject.transform.position) *
-                swingCoefficient
+                swingCoefficient,
+                ForceMode2D.Impulse
             );
         } else {
             GetHorizontalInput();
             GetFreezeInput();
+        }
+
+        if(rigidbody.velocityY < -0.1f && OnGround)
+        {
+            OnLand.Invoke();
         }
     }
 
@@ -136,6 +144,7 @@ public class AligatorController : MonoBehaviour
                 rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 jumpStartTime = Time.time;
                 Jumping = true;
+                OnJump.Invoke();
             }
         }
     }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2abfd58e37eee44449aee424383aa260
+guid: c45b7b37d0fa7174abe19980df7cd1d0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7430558899833497709
-    second: Bolt_0
+      213: -3350711087637808057
+    second: Step_Tile_L_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bolt_0
+      name: Step_Tile_L_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 3
+        y: 0
         width: 54
-        height: 49
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3979ec4ac0a51e890800000000000000
-      internalID: -7430558899833497709
+      spriteID: 74cb264c402ef71d0800000000000000
+      internalID: -3350711087637808057
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bolt_0: -7430558899833497709
+      Step_Tile_L_0: -3350711087637808057
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
