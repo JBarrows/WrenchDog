@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AligatorController : MonoBehaviour
 {
+    [SerializeField] private UnityEvent ThrowWrench;
+    [SerializeField] private UnityEvent RecallWrench;
+
     public float maxHorizontalSpeed = 6.0f;
     public float horizontalInputScalar = 5.0f;
     public float jumpForce = 10.0f;
@@ -18,6 +22,9 @@ public class AligatorController : MonoBehaviour
     bool isSwinging = false;
     bool isSwingDown = false;
     Vector3 swingAnchor = new Vector3(0.0f, 0.0f, 0.0f);
+    Camera camera;
+    bool isUsingWrench = false;
+    GameObject lockedPlatform = null;
 
     int facingDirection = 1; // -1: left, 0: away/towards, 1: right
     bool isJumping = false;
@@ -60,6 +67,7 @@ public class AligatorController : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        camera = Camera.main;
     }
 
     // Update is called once per frame
@@ -77,6 +85,7 @@ public class AligatorController : MonoBehaviour
             );
         } else {
             GetHorizontalInput();
+            GetFreezeInput();
         }
     }
 
@@ -132,14 +141,41 @@ public class AligatorController : MonoBehaviour
     }
 
     void GetSwingInput() {
-        isSwingDown = Input.GetButton("Fire2");
+        isSwingDown = Input.GetButton("Fire2") && !isUsingWrench;
         if (!isSwingDown && swingRadius > 0.0f)
         {
             swingRadius = 0.0f;
             isSwinging = false;
         }
+    }
 
-        // Debug.Log(isSwingDown);
+    void GetFreezeInput() {
+        if(Input.GetButtonDown("Fire1"))
+        {
+            if(!isUsingWrench){
+                Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
+                Collider2D[] hits = Physics2D.OverlapCircleAll(new Vector2(pos.x, pos.y), 0);
+                foreach(Collider2D hit in hits) {
+                    if(hit.tag == "PlatformBolt")
+                    {
+                        isUsingWrench = true;
+                        lockedPlatform = hit.gameObject.transform.parent.gameObject;
+                        // play throw wrench animation
+                        ThrowWrench.Invoke();
+                    }
+                }
+            } else {
+                // Call wrench back
+                isUsingWrench = false;
+                RecallWrench.Invoke();
+                lockedPlatform = null;
+            }
+        }
+    }
+
+    public void TogglePlatformFreeze()
+    {
+        lockedPlatform.BroadcastMessage("ToggleFreezePlatform");
     }
 
     void OnTriggerStay2D(Collider2D other)
