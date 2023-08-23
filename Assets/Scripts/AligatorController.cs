@@ -101,6 +101,13 @@ public class AligatorController : MonoBehaviour
         {
             OnLand.Invoke();
         }
+
+        if (Input.GetButtonDown("Reset")) {
+            var sceneController = FindAnyObjectByType<SceneController>();
+            if (sceneController) {
+                sceneController.reload();
+            }
+        }
     }
 
     void GetHorizontalInput()
