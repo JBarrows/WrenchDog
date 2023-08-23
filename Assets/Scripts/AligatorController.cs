@@ -27,7 +27,7 @@ public class AligatorController : MonoBehaviour
     bool isSwinging = false;
     bool isSwingDown = false;
     Vector3 swingAnchor = new Vector3(0.0f, 0.0f, 0.0f);
-    Camera camera;
+    new Camera camera;
     bool isUsingWrench = false;
     GameObject lockedPlatform = null;
 
