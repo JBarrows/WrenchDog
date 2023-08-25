@@ -19,7 +19,6 @@ public class SwingPoint : MonoBehaviour
         get { return isEngaged; }
         
         set {
-            Debug.Log("Engaged: " + value);
             isEngaged = value;
             DetermineColor();
         }

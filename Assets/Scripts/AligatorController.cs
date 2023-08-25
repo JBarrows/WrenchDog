@@ -23,14 +23,11 @@ public class AligatorController : MonoBehaviour
     public GameObject worldWrench;
     
     GameObject throwingWrench;
-    float swingRadius = 0.0f;
-    bool isSwinging = false;
     bool isSwingDown = false;
-    Vector3 swingAnchor = new Vector3(0.0f, 0.0f, 0.0f);
     new Camera camera;
     bool isUsingWrench = false;
     GameObject lockedPlatform = null;
-    [SerializeField] private SwingContoller swingContoller;
+    [SerializeField] private SwingController swingController;
 
     int facingDirection = 1; // -1: left, 0: away/towards, 1: right
     bool isJumping = false;
@@ -82,15 +79,23 @@ public class AligatorController : MonoBehaviour
     {
         GetJumpInput();
         GetSwingInput();
-        if(isSwinging)
+        if(swingController.IsEngaged)
         {
-            float distance = Vector3.Distance(gameObject.transform.position, swingAnchor);
-            Vector3 normalizedVector = Vector3.Normalize(swingAnchor - gameObject.transform.position);
-            wrenchHolder.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(normalizedVector.y, normalizedVector.x) * Mathf.Rad2Deg);
+            Vector3 wrenchVector = swingController.ActiveSwingPoint.gameObject.transform.position - gameObject.transform.position;
+            // float distance = wrenchVector.magnitude;
+            // Vector3 normalizedVector = wrenchVector.normalized;
+            // wrenchHolder.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(normalizedVector.y, normalizedVector.x) * Mathf.Rad2Deg);
+            // rigidbody.AddForce(
+            //     distance * distance * distance * Time.deltaTime *
+            //     normalizedVector *
+            //     swingCoefficient,
+            //     ForceMode2D.Impulse
+            // );
+            wrenchHolder.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(wrenchVector.y, wrenchVector.x) * Mathf.Rad2Deg);
             rigidbody.AddForce(
-                distance * distance * distance * Time.deltaTime *
-                normalizedVector *
-                swingCoefficient,
+                wrenchVector.sqrMagnitude * Time.deltaTime *
+                swingCoefficient *
+                wrenchVector,
                 ForceMode2D.Impulse
             );
         } else {
@@ -165,14 +170,10 @@ public class AligatorController : MonoBehaviour
 
     void GetSwingInput() {
         isSwingDown = Input.GetButton("Fire2") && !isUsingWrench;
-        if (!isSwingDown && swingRadius > 0.0f)
+        if (!isSwingDown && swingController.IsEngaged)
         {
             // Release swing
-            swingRadius = 0.0f;
-            isSwinging = false;
-            if (swingContoller) {
-                swingContoller.ActiveSwingPoint = null;
-            }
+            swingController.ActiveSwingPoint = null;
             wrenchHolder.transform.localRotation = Quaternion.Euler(0, 0, 62);
         }
     }
@@ -235,15 +236,12 @@ public class AligatorController : MonoBehaviour
     {
         if (other.tag == "SwingPoint")
         {
-            if(swingRadius <= 0.0f && isSwingDown)
+            if (swingController.IsEngaged)
+                return;
+
+            if (isSwingDown)
             {
-                var otherSwingPoint = other.GetComponent<SwingPoint>();
-                if (otherSwingPoint && this.swingContoller) {
-                    swingContoller.ActiveSwingPoint = otherSwingPoint;
-                }
-                swingAnchor = other.gameObject.transform.position;
-                swingRadius = Vector3.Distance(gameObject.transform.position, swingAnchor);
-                isSwinging = true;
+                swingController.SwingOn(other.gameObject);
             }
         }
     }

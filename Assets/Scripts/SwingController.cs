@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwingContoller : MonoBehaviour
+public class SwingController : MonoBehaviour
 {
     [SerializeField] private SwingPoint activeSwingPoint;
+
+    private float swingRadius = 0.0f;
 
     public SwingPoint ActiveSwingPoint
     {
@@ -24,8 +26,13 @@ public class SwingContoller : MonoBehaviour
             if (activeSwingPoint) {
                 // Engage new point
                 activeSwingPoint.IsEngaged = true;
+                swingRadius = Vector3.Distance(gameObject.transform.position, activeSwingPoint.gameObject.transform.position);
             }
         }
+    }
+
+    public bool IsEngaged { 
+        get { return activeSwingPoint != null; }
     }
 
     // Start is called before the first frame update
@@ -38,5 +45,14 @@ public class SwingContoller : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SwingOn(GameObject target)
+    {
+        var swingPoint = target.GetComponent<SwingPoint>();
+        if (!swingPoint)
+            return;
+        
+        ActiveSwingPoint = swingPoint;
     }
 }
