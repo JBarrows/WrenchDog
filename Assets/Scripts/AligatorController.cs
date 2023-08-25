@@ -82,15 +82,6 @@ public class AligatorController : MonoBehaviour
         if(swingController.IsEngaged)
         {
             Vector3 wrenchVector = swingController.ActiveSwingPoint.gameObject.transform.position - gameObject.transform.position;
-            // float distance = wrenchVector.magnitude;
-            // Vector3 normalizedVector = wrenchVector.normalized;
-            // wrenchHolder.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(normalizedVector.y, normalizedVector.x) * Mathf.Rad2Deg);
-            // rigidbody.AddForce(
-            //     distance * distance * distance * Time.deltaTime *
-            //     normalizedVector *
-            //     swingCoefficient,
-            //     ForceMode2D.Impulse
-            // );
             wrenchHolder.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(wrenchVector.y, wrenchVector.x) * Mathf.Rad2Deg);
             rigidbody.AddForce(
                 wrenchVector.sqrMagnitude * Time.deltaTime *
