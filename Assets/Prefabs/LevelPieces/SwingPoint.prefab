@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5483030862887798362}
   - component: {fileID: 6937527636242367255}
   - component: {fileID: 1753050505539510243}
+  - component: {fileID: 5588299223246765637}
   m_Layer: 0
   m_Name: SwingPoint
   m_TagString: SwingPoint
@@ -122,6 +123,22 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 2
+--- !u!114 &5588299223246765637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550365657960416092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e655f9b8cda37b45a6de7512dc5e85f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorDefaultColor: {r: 0.6156863, g: 0.7764706, b: 0.83137256, a: 0.13333334}
+  indicatorInRangeColor: {r: 0.51279813, g: 0.9150943, b: 0.52118033, a: 0.13333334}
+  indicatorGrappledColor: {r: 0.9433962, g: 0.9278768, b: 0.63545746, a: 0.13333334}
+  indicatorCircle: {fileID: 2223729706118672907}
 --- !u!1 &5516452430687574945
 GameObject:
   m_ObjectHideFlags: 0
