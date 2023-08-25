@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorDefaultColor: {r: 0.6156863, g: 0.7764706, b: 0.83137256, a: 0.13333334}
   indicatorInRangeColor: {r: 0.51279813, g: 0.9150943, b: 0.52118033, a: 0.13333334}
-  indicatorGrappledColor: {r: 0.9433962, g: 0.9278768, b: 0.63545746, a: 0.13333334}
+  indicatorGrappledColor: {r: 1, g: 1, b: 1, a: 0.13333334}
   indicatorCircle: {fileID: 2223729706118672907}
 --- !u!1 &5516452430687574945
 GameObject:

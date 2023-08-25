@@ -30,6 +30,7 @@ public class AligatorController : MonoBehaviour
     new Camera camera;
     bool isUsingWrench = false;
     GameObject lockedPlatform = null;
+    [SerializeField] private SwingContoller swingContoller;
 
     int facingDirection = 1; // -1: left, 0: away/towards, 1: right
     bool isJumping = false;
@@ -166,8 +167,12 @@ public class AligatorController : MonoBehaviour
         isSwingDown = Input.GetButton("Fire2") && !isUsingWrench;
         if (!isSwingDown && swingRadius > 0.0f)
         {
+            // Release swing
             swingRadius = 0.0f;
             isSwinging = false;
+            if (swingContoller) {
+                swingContoller.ActiveSwingPoint = null;
+            }
             wrenchHolder.transform.localRotation = Quaternion.Euler(0, 0, 62);
         }
     }
@@ -232,6 +237,10 @@ public class AligatorController : MonoBehaviour
         {
             if(swingRadius <= 0.0f && isSwingDown)
             {
+                var otherSwingPoint = other.GetComponent<GrapplePoint>();
+                if (otherSwingPoint && this.swingContoller) {
+                    swingContoller.ActiveSwingPoint = otherSwingPoint;
+                }
                 swingAnchor = other.gameObject.transform.position;
                 swingRadius = Vector3.Distance(gameObject.transform.position, swingAnchor);
                 isSwinging = true;

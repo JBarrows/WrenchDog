@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 1484141423579557130}
   - component: {fileID: 6014933543235938141}
   - component: {fileID: 2440018530024936960}
+  - component: {fileID: 7891593399677510639}
   m_Layer: 0
   m_Name: AlisonGator
   m_TagString: Player
@@ -277,6 +278,7 @@ MonoBehaviour:
   swingCoefficient: 0.9
   wrenchHolder: {fileID: 7644850510122056200}
   worldWrench: {fileID: 1802128862769957210, guid: 0d871557da0053e4da6dd2cecf2d76df, type: 3}
+  grappleContoller: {fileID: 7891593399677510639}
 --- !u!61 &2440018530024936960
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -323,6 +325,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.73, y: 0.1}
   m_EdgeRadius: 0
+--- !u!114 &7891593399677510639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733999037864743170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2d3f0c40151cf44ac3b94acb96e985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeGrapplePoint: {fileID: 0}
 --- !u!1 &7644850510122056200
 GameObject:
   m_ObjectHideFlags: 0
