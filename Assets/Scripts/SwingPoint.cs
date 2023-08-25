@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GrapplePoint : MonoBehaviour
+public class SwingPoint : MonoBehaviour
 {
     public Color indicatorDefaultColor;
     public Color indicatorInRangeColor;
-    public Color indicatorGrappledColor;
+    public Color indicatorEngagedColor;
 
     [SerializeField] private SpriteRenderer indicatorCircle;
 
@@ -46,7 +46,7 @@ public class GrapplePoint : MonoBehaviour
         Color color = indicatorDefaultColor;
         
         if (isEngaged) {
-            color = indicatorGrappledColor;
+            color = indicatorEngagedColor;
         } else if (isInRange) {
             color = indicatorInRangeColor;
         }

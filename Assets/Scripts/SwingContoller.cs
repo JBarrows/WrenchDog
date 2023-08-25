@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SwingContoller : MonoBehaviour
 {
-    [SerializeField] private GrapplePoint activeSwingPoint;
+    [SerializeField] private SwingPoint activeSwingPoint;
 
-    public GrapplePoint ActiveSwingPoint
+    public SwingPoint ActiveSwingPoint
     {
         get { return activeSwingPoint; }
         

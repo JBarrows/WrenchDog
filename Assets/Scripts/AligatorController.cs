@@ -237,7 +237,7 @@ public class AligatorController : MonoBehaviour
         {
             if(swingRadius <= 0.0f && isSwingDown)
             {
-                var otherSwingPoint = other.GetComponent<GrapplePoint>();
+                var otherSwingPoint = other.GetComponent<SwingPoint>();
                 if (otherSwingPoint && this.swingContoller) {
                     swingContoller.ActiveSwingPoint = otherSwingPoint;
                 }
