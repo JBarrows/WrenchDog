@@ -56,13 +56,18 @@ public class AligatorController : MonoBehaviour
             if (Jumping)
                 return false;
             
-            RaycastHit2D hit = Physics2D.Linecast(transform.position + new Vector3(-0.73f / 2F, -0.01f), transform.position + new Vector3(0.73f/2F, -0.01f));
-            
-            if (!hit) {
-                return false;
+            // NOTE: We should use a "Floor" layer or tag instead of "Not player"
+            LayerMask floorMask = LayerMask.NameToLayer("Player");
+            Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.73f, 0.1f), 0f, floorMask);
+
+            foreach (var h in hits)
+            {
+                if (!h.isTrigger) {
+                    return true;
+                } 
             }
 
-            return true;
+            return false;
         }
     }
 
@@ -82,7 +87,9 @@ public class AligatorController : MonoBehaviour
         if(swingController.IsEngaged)
         {
             Vector3 wrenchVector = swingController.ActiveSwingPoint.gameObject.transform.position - gameObject.transform.position;
+            // Rotate the wrench to face the SwingPoint
             wrenchHolder.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(wrenchVector.y, wrenchVector.x) * Mathf.Rad2Deg);
+            // Apply swing physics
             rigidbody.AddForce(
                 wrenchVector.sqrMagnitude * Time.deltaTime *
                 swingCoefficient *

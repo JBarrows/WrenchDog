@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7731195934388005211}
   - component: {fileID: 5184398623506638912}
   - component: {fileID: 4757539198313959830}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OneWayPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7554574984898123206}
   - component: {fileID: 8556202542258499823}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Step_Tile_L_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522138022843651243}
   - component: {fileID: 7074056669551526642}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Step_Tile_L_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
