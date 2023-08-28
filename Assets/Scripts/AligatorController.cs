@@ -57,7 +57,7 @@ public class AligatorController : MonoBehaviour
                 return false;
             
             // NOTE: We should use a "Floor" layer or tag instead of "Not player"
-            LayerMask floorMask = LayerMask.NameToLayer("Player");
+            LayerMask floorMask = ~LayerMask.GetMask("Player");
             Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.73f, 0.1f), 0f, floorMask);
 
             foreach (var h in hits)
