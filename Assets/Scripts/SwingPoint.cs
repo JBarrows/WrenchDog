@@ -11,6 +11,8 @@ public class SwingPoint : MonoBehaviour
 
     [SerializeField] private SpriteRenderer indicatorCircle;
 
+    [SerializeField] private Rigidbody2D weightBody;
+
     private bool isEngaged = false;
     private bool isInRange = false;
 
@@ -20,7 +22,13 @@ public class SwingPoint : MonoBehaviour
         
         set {
             isEngaged = value;
+            
             DetermineColor();
+            
+            if (weightBody) {
+                // The weight adds a fun little motion while the bolt isn't engaged
+                weightBody.simulated = !isEngaged;
+            }
         }
     }
     
