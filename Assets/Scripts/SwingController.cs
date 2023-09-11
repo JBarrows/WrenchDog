@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SwingController : MonoBehaviour
 {
+    private AligatorController aligatorController;
+
+    private SwingWrench swingWrench;
+    [SerializeField] private SwingWrench swingWrenchTemplate;
+
     [SerializeField] private SwingPoint activeSwingPoint;
 
     private float swingRadius = 0.0f;
@@ -19,6 +24,10 @@ public class SwingController : MonoBehaviour
             if (activeSwingPoint) {
                 // Disengage old point
                 activeSwingPoint.IsEngaged = false;
+
+                if (swingWrench) {
+                    swingWrench.gameObject.SetActive(false);
+                }
             }
 
             activeSwingPoint = value;
@@ -38,7 +47,7 @@ public class SwingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        aligatorController = GetComponent<AligatorController>();
     }
 
     // Update is called once per frame
@@ -54,5 +63,20 @@ public class SwingController : MonoBehaviour
             return;
         
         ActiveSwingPoint = swingPoint;
+        
+        // Make sure we have a SwingWrench
+        if (!swingWrench) { 
+            swingWrench = Instantiate(swingWrenchTemplate);
+            swingWrench.holderPoint = aligatorController.wrenchHolder.transform;
+        }
+
+        if (swingWrench) {
+            // Hide Prop Wrench
+            aligatorController.SetPropWrenchActive(false);
+
+            // COnnect and show SwingWrench
+            swingWrench.swingPoint = swingPoint;
+            swingWrench.gameObject.SetActive(true);
+        }
     }
 }

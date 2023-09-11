@@ -173,6 +173,8 @@ public class AligatorController : MonoBehaviour
             // Release swing
             swingController.ActiveSwingPoint = null;
             wrenchHolder.transform.localRotation = Quaternion.Euler(0, 0, 62);
+            // Show prop wrench
+            SetPropWrenchActive(true);
         }
     }
 
@@ -197,7 +199,7 @@ public class AligatorController : MonoBehaviour
                         throwingWrench.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(normalizedVector.y, normalizedVector.x) * Mathf.Rad2Deg);
                         throwingWrench.SetActive(true);
                         throwingWrench.GetComponent<Rigidbody2D>().AddForce((endPosition - startPosition) / 0.25f, ForceMode2D.Impulse);
-                        wrenchHolder.SetActive(false);
+                        SetPropWrenchActive(false);
                         StartCoroutine(ThrowWrenchCoroutine(endPosition));
                         
                     }
@@ -206,7 +208,7 @@ public class AligatorController : MonoBehaviour
                 // Call wrench back
                 isUsingWrench = false;
                 throwingWrench.SetActive(false);
-                wrenchHolder.SetActive(true);
+                SetPropWrenchActive(true);
                 RecallWrench.Invoke();
                 lockedPlatform = null;
             }
@@ -242,5 +244,11 @@ public class AligatorController : MonoBehaviour
                 swingController.SwingOn(other.gameObject);
             }
         }
+    }
+
+    public void SetPropWrenchActive(bool value)
+    {
+        if (!wrenchHolder) return;
+        wrenchHolder.SetActive(value);
     }
 }

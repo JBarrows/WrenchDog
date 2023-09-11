@@ -360,6 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7a70c8875183e488b079d2665b9ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swingWrenchTemplate: {fileID: 7683504865362124348, guid: 0a1b32a6d4996be4aa64d6903de1ae8d, type: 3}
   activeSwingPoint: {fileID: 0}
 --- !u!1 &7644850510122056200
 GameObject:
