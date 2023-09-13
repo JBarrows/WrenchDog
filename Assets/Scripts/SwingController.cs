@@ -66,8 +66,7 @@ public class SwingController : MonoBehaviour
         
         // Make sure we have a SwingWrench
         if (!swingWrench) { 
-            swingWrench = Instantiate(swingWrenchTemplate);
-            swingWrench.holderPoint = aligatorController.wrenchHolder.transform;
+            swingWrench = Instantiate(swingWrenchTemplate, aligatorController.wrenchHolder.transform);
         }
 
         if (swingWrench) {

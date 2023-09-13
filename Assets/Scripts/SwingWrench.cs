@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class SwingWrench : MonoBehaviour
 {
-    public GameObject handleObject;
-    public Transform handlePoint;
-    public GameObject headObject;
-    public Transform headPoint;
-    public Transform holderPoint;
+    public float handleOffset;
+    public float headOffset;
     public SwingPoint swingPoint;
-    public LineRenderer shaftLine;
+    public SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -22,21 +19,16 @@ public class SwingWrench : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!holderPoint || !swingPoint)
+        if (!swingPoint)
             return;
 
-        handleObject.transform.position = holderPoint.position;
-        headObject.transform.position = swingPoint.transform.position;
-
-        // Rotate the Handle to face the Head
-        Vector3 wrenchVector = handleObject.transform.position - headObject.transform.position;
+        // Rotate the Wrench to face the SwingPoint
+        Vector2 wrenchVector = swingPoint.transform.position - this.transform.position;
         Quaternion r = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(wrenchVector.y, wrenchVector.x) * Mathf.Rad2Deg);
-        handleObject.transform.rotation = r;
-        headObject.transform.rotation = r;
+        this.transform.rotation = r;
         swingPoint.transform.rotation = r;
-
-        // Align the shaft
-        shaftLine.useWorldSpace = true;
-        shaftLine.SetPositions(new Vector3[2]{handlePoint.position, headPoint.position});
+        var spriteWidth = Mathf.Max(0, wrenchVector.magnitude) + handleOffset + headOffset;
+        sprite.transform.localPosition = Vector2.right * ((spriteWidth / 2) - handleOffset);
+        sprite.size = new Vector2(spriteWidth, 1);
     }
 }

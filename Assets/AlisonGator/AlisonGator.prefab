@@ -347,6 +347,7 @@ MonoBehaviour:
   swingCoefficient: 0.9
   wrenchHolder: {fileID: 7644850510122056200}
   worldWrench: {fileID: 1802128862769957210, guid: 0d871557da0053e4da6dd2cecf2d76df, type: 3}
+  propWrench: {fileID: 7650513472617387998}
   swingController: {fileID: 787353614328990359}
 --- !u!114 &787353614328990359
 MonoBehaviour:
@@ -529,5 +530,10 @@ PrefabInstance:
 --- !u!4 &7018796060852309348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
+  m_PrefabInstance: {fileID: 7416721230813604495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7650513472617387998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bfa984b8b04b93d4e93ea5406c4b3449, type: 3}
   m_PrefabInstance: {fileID: 7416721230813604495}
   m_PrefabAsset: {fileID: 0}

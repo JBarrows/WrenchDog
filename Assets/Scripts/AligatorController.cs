@@ -21,7 +21,7 @@ public class AligatorController : MonoBehaviour
     public float swingCoefficient = 1.0f;
     public GameObject wrenchHolder;
     public GameObject worldWrench;
-    
+    [SerializeField] GameObject propWrench; // The wrench model held in the character's hand that doesn't do anything
     GameObject throwingWrench;
     bool isSwingDown = false;
     new Camera camera;
@@ -87,8 +87,6 @@ public class AligatorController : MonoBehaviour
         if(swingController.IsEngaged)
         {
             Vector3 wrenchVector = swingController.ActiveSwingPoint.gameObject.transform.position - gameObject.transform.position;
-            // Rotate the wrench to face the SwingPoint
-            wrenchHolder.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(wrenchVector.y, wrenchVector.x) * Mathf.Rad2Deg);
             // Apply swing physics
             rigidbody.AddForce(
                 wrenchVector.sqrMagnitude * Time.deltaTime *
@@ -172,7 +170,6 @@ public class AligatorController : MonoBehaviour
         {
             // Release swing
             swingController.ActiveSwingPoint = null;
-            wrenchHolder.transform.localRotation = Quaternion.Euler(0, 0, 62);
             // Show prop wrench
             SetPropWrenchActive(true);
         }
@@ -248,7 +245,7 @@ public class AligatorController : MonoBehaviour
 
     public void SetPropWrenchActive(bool value)
     {
-        if (!wrenchHolder) return;
-        wrenchHolder.SetActive(value);
+        if (!propWrench) return;
+        propWrench.SetActive(value);
     }
 }
