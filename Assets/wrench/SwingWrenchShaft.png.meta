@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SwingWrenchShaft_0: 5194303805707421160
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
