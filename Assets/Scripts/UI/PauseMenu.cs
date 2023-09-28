@@ -15,6 +15,20 @@ public class PauseMenu : MonoBehaviour
 
     static float musicValue = 1.0f;
 
+    bool isOpen = false;
+
+    AligatorController character = null;
+
+    AligatorController Character {
+        get {
+            if (character == null) {
+                character = FindAnyObjectByType<AligatorController>();
+            }
+
+            return character;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,17 +39,39 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Cancel")) {
+            if (isOpen) {
+                close();
+            } else {
+                open();
+            }
+        }
     }
 
     public void close()
     {
+        if (!isOpen)
+            return;
+
+        isOpen = false;
         animator.SetBool("IsOpen", false);
+        if (Character) {
+            Character.enabled = true;
+        }
+        Time.timeScale = 1.0f;
     }
 
     public void open()
     {
+        if (isOpen)
+            return;
+
+        isOpen = true;
         animator.SetBool("IsOpen", true);
+        if (Character) {
+            Character.enabled = false;
+        }
+        Time.timeScale = 0.0f;
     }
 
     public void exitGame()
