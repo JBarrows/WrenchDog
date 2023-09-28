@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class PauseMenu : MonoBehaviour
 {
@@ -37,7 +40,11 @@ public class PauseMenu : MonoBehaviour
 
     public void exitGame()
     {
+    #if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+    #else
         Application.Quit();
+    #endif
     }
 
     public void setMusicVolume(float value)
