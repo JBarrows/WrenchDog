@@ -533,7 +533,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8428685239145139303}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: close
+        m_MethodName: exitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1488,7 +1488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 21.999023, y: 315}
+  m_AnchoredPosition: {x: 21.998413, y: 315}
   m_SizeDelta: {x: -227.506, y: 360.726}
   m_Pivot: {x: 0.136, y: 0.765}
 --- !u!222 &2982052755490037874
@@ -1827,6 +1827,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8576213471751800640}
+  masterMixer: {fileID: 24100000, guid: 684a46861ab8d2345965d78a9a37defd, type: 2}
+  musicSlider: {fileID: 3249973935545705861}
 --- !u!1 &6392786562267327619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,7 +2146,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8428685239145139303}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: setVolume
+        m_MethodName: setMusicVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
