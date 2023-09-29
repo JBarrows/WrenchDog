@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2841797230856917389
+--- !u!1 &4679505032923109817
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7055657623761462267}
-  - component: {fileID: 6268965020977042195}
+  - component: {fileID: 9119664922622635916}
+  - component: {fileID: 785686526676522059}
   m_Layer: 0
-  m_Name: LevelManager
+  m_Name: ApplicationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7055657623761462267
+--- !u!4 &9119664922622635916
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2841797230856917389}
+  m_GameObject: {fileID: 4679505032923109817}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.92302454, y: 3.1176684, z: 2.11667}
+  m_LocalPosition: {x: -7.301247, y: 0.242506, z: 0.24590114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6268965020977042195
+--- !u!114 &785686526676522059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2841797230856917389}
+  m_GameObject: {fileID: 4679505032923109817}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06527173706caf74ba33b4c242eb91cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 776d4a964e34ea44ea836deb2d0627e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabAppController: {fileID: 4679505032923109817, guid: 3fd11871632da554298ec444597bb3e1, type: 3}
-  prefabSceneController: {fileID: 4197379983796561402, guid: 0c56dc4886275ff4f9af0cf6961bbe04, type: 3}
+  musicMixer: {fileID: 24100000, guid: 684a46861ab8d2345965d78a9a37defd, type: 2}
