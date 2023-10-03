@@ -11,6 +11,8 @@ public class SwingPoint : MonoBehaviour
 
     [SerializeField] private SpriteRenderer indicatorCircle;
 
+    [SerializeField] private HingeJoint2D m_hingeJoint;
+
     [SerializeField] private Rigidbody2D weightBody;
 
     private bool isEngaged = false;
@@ -32,6 +34,8 @@ public class SwingPoint : MonoBehaviour
         }
     }
     
+    public HingeJoint2D hingeJoint { get => m_hingeJoint; set => m_hingeJoint = value; }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player")) {
@@ -59,5 +63,17 @@ public class SwingPoint : MonoBehaviour
         }
 
         indicatorCircle.color = color;
+    }
+
+    public void Disengage()
+    {
+        hingeJoint.connectedBody = weightBody;
+        IsEngaged = false;
+    }
+
+    public void Engage(Rigidbody2D connectedBody)
+    {
+        IsEngaged = true;
+        hingeJoint.connectedBody = connectedBody;
     }
 }

@@ -21,20 +21,28 @@ public class SwingController : MonoBehaviour
             if (value == activeSwingPoint)
                 return;
 
+            var characterBody = aligatorController.GetComponent<Rigidbody2D>();
+
             if (activeSwingPoint) {
                 // Disengage old point
-                activeSwingPoint.IsEngaged = false;
+                activeSwingPoint.Disengage();
 
                 if (swingWrench) {
                     swingWrench.gameObject.SetActive(false);
+                    characterBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+                    characterBody.gravityScale = aligatorController.stdGravity;
+                    characterBody.transform.rotation = Quaternion.identity;
                 }
             }
 
             activeSwingPoint = value;
 
             if (activeSwingPoint) {
+                var v = characterBody.velocity; // Transfer this velocity to be tangential to the swing
+                characterBody.gravityScale = 0.5f;
+                characterBody.constraints = RigidbodyConstraints2D.None;
                 // Engage new point
-                activeSwingPoint.IsEngaged = true;
+                activeSwingPoint.Engage(characterBody);
                 swingRadius = Vector3.Distance(gameObject.transform.position, activeSwingPoint.gameObject.transform.position);
             }
         }

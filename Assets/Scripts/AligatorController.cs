@@ -45,7 +45,7 @@ public class AligatorController : MonoBehaviour
             if (isJumping) {
                 rigidbody.gravityScale = riseGravity;
             } else {
-                rigidbody.gravityScale = 1.5f;
+                rigidbody.gravityScale = stdGravity;
             }
         }
     }
@@ -84,17 +84,8 @@ public class AligatorController : MonoBehaviour
     {
         GetJumpInput();
         GetSwingInput();
-        if(swingController.IsEngaged)
-        {
-            Vector3 wrenchVector = swingController.ActiveSwingPoint.gameObject.transform.position - gameObject.transform.position;
-            // Apply swing physics
-            rigidbody.AddForce(
-                wrenchVector.sqrMagnitude * Time.deltaTime *
-                swingCoefficient *
-                wrenchVector,
-                ForceMode2D.Impulse
-            );
-        } else {
+        
+        if(!swingController.IsEngaged) {
             GetHorizontalInput();
             GetFreezeInput();
         }
