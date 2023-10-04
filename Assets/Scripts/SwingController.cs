@@ -11,8 +11,6 @@ public class SwingController : MonoBehaviour
 
     [SerializeField] private SwingPoint activeSwingPoint;
 
-    private float swingRadius = 0.0f;
-
     public SwingPoint ActiveSwingPoint
     {
         get { return activeSwingPoint; }
@@ -38,12 +36,40 @@ public class SwingController : MonoBehaviour
             activeSwingPoint = value;
 
             if (activeSwingPoint) {
-                var v = characterBody.velocity; // Transfer this velocity to be tangential to the swing
+                Vector2 wrenchVector = aligatorController.wrenchHolder.transform.position - activeSwingPoint.transform.position;
+                float swingRadius = wrenchVector.magnitude;
+                var v = characterBody.velocity.magnitude; // Transfer this velocity to be tangential to the swing
+                var multiplier = 1.2f * v / swingRadius;
+                Vector2 newVector = new Vector2(multiplier * wrenchVector.y,
+                                                multiplier * wrenchVector.x);
+
+                // We do some manipulation here so the player (almost) always starts going downward
+                if (wrenchVector.x > 0 && wrenchVector.y > 0) {                                
+                    // Sector I
+                    newVector.y *= -1;
+                } else if (wrenchVector.x < 0 && wrenchVector.y > 0) {
+                    // Sector II
+                    newVector.x *= -1;
+                } else if (wrenchVector.x < 0 && wrenchVector.y < 0) {
+                    // Sector III
+                    newVector.x *= -1;
+                } else if (wrenchVector.x > 0 && wrenchVector.y < 0) {
+                    // Sector IV
+                    if (characterBody.velocity.x > 0) {
+                        // Special case: A player moving right and swinging from the bottom-right
+                        // may expect to go upwards instead of downwards
+                        newVector.x *= -1;
+                    } else {
+                        newVector.y *= -1;
+                    }
+                }
+                
                 characterBody.gravityScale = 0.5f;
                 characterBody.constraints = RigidbodyConstraints2D.None;
+                characterBody.velocity = newVector;
+
                 // Engage new point
                 activeSwingPoint.Engage(characterBody);
-                swingRadius = Vector3.Distance(gameObject.transform.position, activeSwingPoint.gameObject.transform.position);
             }
         }
     }

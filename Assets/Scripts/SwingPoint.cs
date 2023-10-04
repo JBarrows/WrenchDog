@@ -34,7 +34,7 @@ public class SwingPoint : MonoBehaviour
         }
     }
     
-    public HingeJoint2D hingeJoint { get => m_hingeJoint; set => m_hingeJoint = value; }
+    public new HingeJoint2D hingeJoint { get => m_hingeJoint; set => m_hingeJoint = value; }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

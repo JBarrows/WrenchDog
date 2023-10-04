@@ -286,6 +286,7 @@ MonoBehaviour:
   indicatorInRangeColor: {r: 0.51279813, g: 0.9150943, b: 0.52118033, a: 0.13333334}
   indicatorEngagedColor: {r: 1, g: 1, b: 1, a: 0.13333334}
   indicatorCircle: {fileID: 2223729706118672907}
+  m_hingeJoint: {fileID: 4202378892284633709}
   weightBody: {fileID: 8888168675637338308}
 --- !u!1 &5516452430687574945
 GameObject:
