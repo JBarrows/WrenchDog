@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-#if UNITY_EDITOR
+#if UNITY_WEBGL
+using UnityEngine.SceneManagement;
+#elif UNITY_EDITOR
 using UnityEditor;
 #endif
 
@@ -29,7 +31,9 @@ public class ApplicationManager : MonoBehaviour
 
     public void ExitGame()
     {
-#if UNITY_EDITOR
+#if UNITY_WEBGL
+        SceneManager.LoadScene("MainMenu");
+#elif UNITY_EDITOR
         EditorApplication.isPlaying = false;
 #else
         Application.Quit();

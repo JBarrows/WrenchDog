@@ -1827,8 +1827,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8576213471751800640}
-  masterMixer: {fileID: 24100000, guid: 684a46861ab8d2345965d78a9a37defd, type: 2}
   musicSlider: {fileID: 3249973935545705861}
+  btnExit: {fileID: 5338744736808577884}
 --- !u!1 &6392786562267327619
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,10 +37,12 @@ public class MainMenu : MonoBehaviour
                 SceneManager.LoadSceneAsync(startGameScene, LoadSceneMode.Single);
             }
         } 
+#if !UNITY_WEBGL
         else if (Input.GetButtonDown("Cancel") && ApplicationManager.Instance != null)
         {
             ApplicationManager.Instance.ExitGame();
         }
+#endif
     }
 
     public void ToggleMusic()
