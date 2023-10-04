@@ -1191,6 +1191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwingPoint (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3550365657960416092, guid: 0c1f9cf25fe82d84d9e04012295d9622, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5483030862887798362, guid: 0c1f9cf25fe82d84d9e04012295d9622, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9
