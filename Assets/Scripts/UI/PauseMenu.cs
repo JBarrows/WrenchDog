@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public Animator animator;
     public Slider musicSlider;
+    public Button btnExit;
 
     bool isOpen = false;
 
@@ -25,6 +26,10 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_WEBGL
+        btnExit.gameObject.SetActive(false);
+#endif
+
         if (musicSlider != null && ApplicationManager.Instance != null)
             musicSlider.value = ApplicationManager.Instance.MusicVolume;
     }
